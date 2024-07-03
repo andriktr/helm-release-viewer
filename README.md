@@ -56,7 +56,7 @@ Add an optional feature to manage releases like rollback or uninstall | :x:
 
 ## Helm-Release-Viewer helm chart
 
-The helm chart to deploy the helm-release-viewer application is located in the [helm-release-viewer](/helm-release-viewer) directory. It will deploy all necessary dependencies required to run and function the application.
+The helm chart to deploy the helm-release-viewer application is located in the [helm-release-viewer](/charts/helm-release-viewer) directory. It will deploy all necessary dependencies required to run and function the application.
 
 ### Known issues and possible improvements in Helm-Release-Viewer helm chart
 
@@ -71,7 +71,6 @@ Add optional horizontal pod autoscaler to the deployment | :x:
 ### Configure Helm-Release-Viewer chart
 
 Helm chart is configurable by using [values.yaml](charts/helm-release-viewer/values.yaml)
-
 
 Parameters that can be configured are:
 
