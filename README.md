@@ -24,7 +24,7 @@ Current repository contains a helm-release-viewer application and a helm chart t
 
 ## What will be deployed
 
-The [helm-release-viewer application](app/) will be deployed in a kubernetes cluster using the [helm-release-viewer](helm-release-viewer/) helm chart. The application will be deployed in a namespace called `helm-release-viewer` and it will be exposed using an ingress. For complete details on the helm chart, please refer to the [helm-release-viewer templates](helm-release-viewer/templates).
+The [helm-release-viewer application](app/) will be deployed in a kubernetes cluster using the [helm-release-viewer](charts/helm-release-viewer/) helm chart. The application will be deployed in a namespace called `helm-release-viewer` and it will be exposed using an ingress. For complete details on the helm chart, please refer to the [helm-release-viewer templates](charts/helm-release-viewer/templates).
 
 ## Helm-Release-Viewer application
 
@@ -70,11 +70,8 @@ Add optional horizontal pod autoscaler to the deployment | :x:
 
 ### Configure Helm-Release-Viewer chart
 
-Helm chart is configurable by using [values.yaml](helm-release-viewer/values.yaml)
+Helm chart is configurable by using [values.yaml](charts/helm-release-viewer/values.yaml)
 
-- For dev environment use [environments/dev/values.yaml](environments/dev/values.yaml)
-
-- For prod environment use [environments/prod/values.yaml](environments/prod/values.yaml)
 
 Parameters that can be configured are:
 
