@@ -69,6 +69,8 @@ Add a Readiness probe to the application | :white_check_mark:
 Add a Liveness probe to the application | :white_check_mark:
 Add pod disruption budget to the deployment | :white_check_mark:
 Add optional horizontal pod autoscaler to the deployment | :x:
+Add GitHub actions to build and push the Docker image | :x:
+Add GitHub actions to package and deploy the helm chart to a repository | :x:
 
 ### Configure Helm-Release-Viewer chart
 
