@@ -1,4 +1,4 @@
-# Helm-Release-Viewer <img src="/images/hrv.png" alt="HRV" width="50"/> 
+# Helm-Release-Viewer <img src="/images/hrv.png" width="50"/> 
 
 ## Table of Contents
 
