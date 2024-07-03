@@ -1,4 +1,4 @@
-![Logo](./images/hrv.png "Logo")
+<img src="/images/hrv.png" width="100"/> 
 
 # Helm-Release-Viewer
 
