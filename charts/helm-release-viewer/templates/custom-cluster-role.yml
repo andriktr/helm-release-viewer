@@ -1,0 +1,10 @@
+{{- if and .Values.rbac.create (.Values.rbac.customClusterRole.enabled) -}}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    {{- include "helm-release-viewer.labels" . | nindent 4 }}
+  name: {{ .Values.nameOverride }}-cluster-role
+rules:
+{{- toYaml .Values.rbac.customClusterRole.rules | nindent 2 }}
+{{- end }}

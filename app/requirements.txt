@@ -1,0 +1,7 @@
+prettytable
+tabulate
+kubernetes
+flask
+gunicorn
+gevent
+APScheduler

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+    <title>Revision History</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-3" style="color: #333; font-weight: 300; letter-spacing: 1px;">Revision History of <span style="color: #FF6347;">{{ release_name }}</span> release in <span style="color: #4682B4;">{{ namespace }}</span> namespace </h2>
+        <table class="table table-striped">
+            <a href="/" class="btn btn-primary mb-3">Back to Main Page</a>
+            <table class="table table-striped">            
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Revision</th>
+                    <th scope="col">Updated</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Chart</th>
+                    <th scope="col">App Version</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for revision in revision_history %}
+                    <tr>
+                        <td>{{ revision[0] }}</td>
+                        <td>{{ revision[1] }}</td>
+                        <td>{{ revision[2] }}</td>
+                        <td>{{ revision[3] }}</td>
+                        <td>{{ revision[4] }}</td>
+                        <td>{{ revision[5] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Include Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>

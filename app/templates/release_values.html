@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Helm VALUES YAML View Download and Copy</title>
+    <!-- Include Bootstrap CSS for button styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+</head>
+<body>
+    <div id="output" style="white-space: pre-wrap;">{{ release_values }}</div>
+    <script>
+        var yamlData = document.getElementById('output').textContent;
+        var pre = document.createElement('pre');
+        pre.textContent = yamlData;
+
+        var outputDiv = document.getElementById('output');
+        outputDiv.style.paddingLeft = '0.5cm';
+
+        // Clear the outputDiv
+        outputDiv.innerHTML = '';
+
+        // Create a Blob object from the YAML data
+        var blob = new Blob([yamlData], {type: "text/yaml;charset=utf-8"});
+
+        // Create a div to hold the buttons
+        var buttonDiv = document.createElement('div');
+        buttonDiv.style.display = 'flex'; // Apply flexbox properties
+        buttonDiv.style.justifyContent = 'start'; // Align the buttons to the start
+        buttonDiv.style.marginBottom = '20px'; // Add some space below the div
+        buttonDiv.style.marginTop = '20px'; // Add some space above the div
+
+        // Create a download link and append it to the button div
+        var downloadLink = document.createElement('a');
+        downloadLink.download = '{{ release_name }}-values.yaml';
+        downloadLink.href = window.URL.createObjectURL(blob);
+        downloadLink.textContent = 'Download YAML';
+        downloadLink.className = 'btn btn-primary'; // Apply Bootstrap's button classes
+        downloadLink.style.marginRight = '10px'; // Add some space to the right of the button
+        buttonDiv.appendChild(downloadLink);
+
+        // Create a copy to clipboard button and append it to the button div
+        var copyButton = document.createElement('button');
+        copyButton.textContent = 'Copy to Clipboard';
+        copyButton.className = 'btn btn-secondary'; // Apply Bootstrap's button classes
+        copyButton.onclick = function() {
+            navigator.clipboard.writeText(yamlData);
+        };
+        copyButton.style.marginRight = '10px'; // Add some space to the right of the button
+        buttonDiv.appendChild(copyButton);
+
+
+        // Create a back to main page button and append it to the button div
+        var backButton = document.createElement('a');
+        backButton.href = '/'; // Set the href to the URL of the main page
+        backButton.textContent = 'Back to Main Page';
+        backButton.className = 'btn btn-secondary'; // Apply Bootstrap's button classes
+        buttonDiv.appendChild(backButton);
+
+        // Append the buttonDiv to the outputDiv
+        outputDiv.appendChild(buttonDiv);
+
+        // Append the pre element to the outputDiv
+        outputDiv.appendChild(pre);
+    </script>
+</body>
+</html>
+

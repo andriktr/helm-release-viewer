@@ -1,0 +1,167 @@
+# Labels to be used in the helm chart
+labels:
+  app: helm-release-viewer
+
+# Helm chart name
+nameOverride: "helm-release-viewer"
+
+# Application log level and timeout
+app:
+  logLevel: "info"
+  timeout: "120"
+
+# Deployment configuration
+deployment:
+  # Deployment name
+  name: helm-release-viewer
+  # Amount of replicas
+  replicaCount: 2
+  # Selector labels
+  selectorLabels:
+    app: helm-release-viewer
+  # Deployment annotations
+  annotations: {}
+  # Pod annotations
+  podAnnotations: {}
+  # Pod level security context
+  podSecurityContext:
+    runAsUser: 1000 
+    runAsGroup: 1000
+    runAsNonRoot: true
+    fsGroup: 1000
+  # Container level security context
+  securityContext:
+    runAsNonRoot: true
+    runAsGroup: 1000
+    runAsUser: 1000
+    readOnlyRootFilesystem: true
+  # Container ports
+  ports:
+    name: http
+    containerPort: 8080
+    protocol: TCP
+  # Container resources
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2048Mi
+    requests:
+      cpu: 200m 
+      memory: 256Mi
+  # Additional environment variables
+  additionalEnvs:
+  - name: SELECTORS
+    value: ""
+  - name: ENVIRONMENT
+    value: "development"
+  - name: CACHE_TTL
+    value: "700"
+  - name: CACHE_SIZE
+    value: "50000"
+  - name: APP_WARMUP_INTERVAL
+    value: "120"
+  - name: "TZ"
+    value: Etc/UTC
+  # Environment variables from secrets, configmaps etc. 
+  envFrom: []
+  # Container image
+  image:
+    # Image repository
+    repository: "andriktr/helm-release-viewer"
+    # Image tag defaults to the chart appVersion
+    tag: 0.1.0
+    # Image pull policy
+    pullPolicy: Always
+  volumes:
+  - name: tmp-volume
+    emptyDir: {}
+    sizeLimit: "1Gi" 
+  volumeMounts:
+  - name: tmp-volume
+    mountPath: /tmp
+  # Node selector configuration  
+  nodeSelector: {}
+  # Tolerations configuration
+  tolerations: []
+  # Affinity configuration
+  affinity: {}
+  # Liveness probe configuration
+  topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: "topology.kubernetes.io/zone"
+    whenUnsatisfiable: ScheduleAnyway
+    labelSelector:
+      matchLabels:
+        app: helm-release-viewer
+  # Liveness probe configuration
+  livenessProbe:
+    httpGet:
+      path: /healthz
+      port: 8080
+    initialDelaySeconds: 3
+    periodSeconds: 3
+    timeoutSeconds: 5
+  # Readiness probe configuration
+  readinessProbe:
+    tcpSocket:
+      port: 8080
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 5
+
+
+# Create required role, clusterroles, clusterrolebinding
+rbac:
+  create: true
+  readOnly: false
+  customClusterRole:
+    enabled: false
+    clusterRole:
+    rules:
+    - apiGroups: ["*"]
+      resources: ["namespaces"]
+      verbs: ["get", "list", "watch"]
+
+
+# Service account configuration
+serviceAccount:
+  create: true
+  name: "helm-release-viewer"
+  annotations: {}
+
+# Application service configuration
+service:
+  enabled: true
+  name: helm-release-viewer
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: "internal-nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "route"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "600"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "600" 
+  hosts:
+    - host: helm-release-viewer.mydomain.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+  - hosts:
+    - helm-release-viewer.mydomain.com
+
+# Pod disruption budget configuration
+podDisruptionBudget:
+  enabled: true
+  spec:
+    minAvailable: 1
+
+# Azure workload identity configuration
+azureWorkloadIdentity:
+  enabled: false
+  clientID: ""
