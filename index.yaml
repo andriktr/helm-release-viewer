@@ -3,6 +3,19 @@ entries:
   helm-release-viewer:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2024-07-06T12:38:48.930418884Z"
+    description: 'A Helm release viewer. Is a python application that reads the helm
+      releases from the cluster and displays them in a web interface. with couple
+      of filters and search options. Also, it provides the ability to view the release
+      revision history. View, copy, download current values and manifest files. '
+    digest: 4595f6bd48886cd0a0ef2569459e6b616d96d3b34c8164a39d30e8b361f6eb7e
+    name: helm-release-viewer
+    type: application
+    urls:
+    - https://github.com/andriktr/helm-release-viewer/releases/download/helm-release-viewer-0.1.2/helm-release-viewer-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2024-07-06T10:06:04.117636759Z"
     description: 'A Helm release viewer. Is a python application that reads the helm
       releases from the cluster and displays them in a web interface. with couple
@@ -27,4 +40,4 @@ entries:
     urls:
     - https://github.com/andriktr/helm-release-viewer/releases/download/helm-release-viewer-0.1.0/helm-release-viewer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-06T10:06:04.117648912Z"
+generated: "2024-07-06T12:38:48.930444742Z"
