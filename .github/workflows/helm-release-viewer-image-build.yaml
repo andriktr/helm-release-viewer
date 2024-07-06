@@ -32,7 +32,7 @@ jobs:
     - name: Build and push tagged Docker image
       uses: docker/build-push-action@v3
       with:
-        context: .
+        context: ./app
         file: app/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/helm-release-viewer:${{ steps.version_tag.outputs.VERSION }}
@@ -40,7 +40,7 @@ jobs:
     - name: Build and push latest Docker image
       uses: docker/build-push-action@v6
       with:
-        context: .
+        context: ./app
         file: app/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/helm-release-viewer:latest
