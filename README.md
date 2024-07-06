@@ -16,7 +16,7 @@
     - [Test Helm-Release-Viewer chart](#test-helm-release-viewer-chart)
     - [Deploy and Upgrade Helm-Release-Viewer chart](#deploy-and-upgrade-helm-release-viewer-chart)
       - [Build and Push Docker Image](#build-and-push-docker-image)
-      - [Manual deployment](#manual-deployment)
+      - [Deployment](#deployment)
   - [Use and Access Helm-Release-Viewer application](#use-and-access-helm-release-viewer-application)
   - [Remove Solution](#remove-solution)
 
