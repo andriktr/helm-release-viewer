@@ -8,7 +8,7 @@ nameOverride: "helm-release-viewer"
 # Application log level and timeout
 app:
   logLevel: "info"
-  timeout: "125"
+  timeout: "120"
 
 # Deployment configuration
 deployment:
