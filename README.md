@@ -196,7 +196,6 @@ To deploy the Helm-Release-Viewer application from the Helm chart stored in the 
 helm repo add helm-release-viewer https://sysadminas.eu/helm-release-viewer/
 # Update Helm repositories
 helm repo update
-# List chart templates
 # Perform a dry-run install/upgrade
 helm upgrade --install helm-release-viewer helm-release-viewer/helm-release-viewer --namespace helm-release-viewer --values values.yaml  --debug --create-namespace
 ```
