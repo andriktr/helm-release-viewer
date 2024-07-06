@@ -133,6 +133,8 @@ azureWorkloadIdentity.clientId | Client ID for the Azure Workload Identity | ""
 
 In order to test the helm chart, you can use the following command (make sure to define the correct path to the `values.yaml` file):
 
+If you have a local copy of the Helm-Release-Viewer repository, you can use the following commands to test the helm chart:
+
 ```bash
 # List chart templates
 helm template helm-release-viewer helm-release-viewer --namespace helm-release-viewer --values values.yaml --debug
@@ -140,16 +142,36 @@ helm template helm-release-viewer helm-release-viewer --namespace helm-release-v
 helm upgrade --install helm-release-viewer helm-release-viewer --namespace helm-release-viewer --values values.yaml --dry-run --debug
 ```
 
+Otherwise, you can use the following commands to test the helm chart:
+
+```bash
+# Add the Helm repository
+helm repo add helm-release-viewer https://sysadminas.eu/helm-release-viewer/
+# Update Helm repositories
+helm repo update
+# List chart templates
+helm template helm-release-viewer helm-release-viewer/helm-release-viewer --namespace helm-release-viewer --values values.yaml --debug
+# Perform a dry-run install/upgrade
+helm upgrade --install helm-release-viewer helm-release-viewer/helm-release-viewer --namespace helm-release-viewer --values values.yaml --dry-run --debug
+```
+
 ### Deploy and Upgrade Helm-Release-Viewer chart
 
 #### Build and Push Docker Image
 
-Normally the Docker image is built and pushed to a container registry as part of the CI/CD pipeline. The Docker image is built using the [Dockerfile](app/Dockerfile) located in the [app](app) directory.
+You can pull Helm-Release-Viewer image from Docker Hub by using the following command:
+
+```bash
+# For the latest version use the following command
+docker pull andriktr/helm-release-viewer:latest
+
+# For a specific version use the following command
+docker pull andriktr/helm-release-viewer:v<version>
+```
 
 In order to build and push the Docker image manually, you can use the following commands:
 
 ```bash
-
 export DOCKER_REGISTRY=<your-registry>
 export VERSION=<version>
 
@@ -159,12 +181,24 @@ docker build -t $DOCKER_REGISTRY/helm-release-viewer:$VERSION --no-cache --pull 
 docker push $DOCKER_REGISTRY/helm-release-viewer:$VERSION
 ```
 
-#### Manual deployment
+#### Deployment
 
-If you want to deploy helm-release-viewer manually run the following commands from the root directory of the repository (make sure to define the correct path to the `values.yaml` file and select correct cluster context):
+To deploy the Helm-Release-Viewer application from the Helm chart stored locally, you can use the following command:
 
 ```bash
 helm upgrade -i helm-release-viewer helm-release-viewer -f values.yaml -n helm-release-viewer
+```
+
+To deploy the Helm-Release-Viewer application from the Helm chart stored in the Helm repository, you can use the following command:
+
+```bash
+# Add the Helm repository
+helm repo add helm-release-viewer https://sysadminas.eu/helm-release-viewer/
+# Update Helm repositories
+helm repo update
+# List chart templates
+# Perform a dry-run install/upgrade
+helm upgrade --install helm-release-viewer helm-release-viewer/helm-release-viewer --namespace helm-release-viewer --values values.yaml  --debug --create-namespace
 ```
 
 ## Use and Access Helm-Release-Viewer application
