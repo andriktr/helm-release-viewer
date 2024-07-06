@@ -129,6 +129,8 @@ podDisruptionBudget.spec | Pod disruption budget spec should contain either minA
 azureWorkloadIdentity.enabled | If true, create an Azure Workload Identity | false
 azureWorkloadIdentity.clientId | Client ID for the Azure Workload Identity | ""
 
+> Note: Usage of ingress is optional however it is highly recommended if you are planning to use Helm Release Viewer in a production environment and you will need more than one replica of the Helm Release Viewer pod. Ingress allows most easiest way to configure sticky sessions which in current version of Helm Release Viewer is required to make sure that filtering and sorting works correctly in multi-replica environment.
+
 ### Test Helm-Release-Viewer chart
 
 In order to test the helm chart, you can use the following command (make sure to define the correct path to the `values.yaml` file):

@@ -69,13 +69,13 @@ deployment:
     # Image repository
     repository: "andriktr/helm-release-viewer"
     # Image tag defaults to the chart appVersion
-    tag: 0.1.0
+    tag: v0.1.0
     # Image pull policy
     pullPolicy: Always
   volumes:
   - name: tmp-volume
-    emptyDir: {}
-    sizeLimit: "1Gi" 
+    emptyDir:
+      sizeLimit: "1Gi" 
   volumeMounts:
   - name: tmp-volume
     mountPath: /tmp
@@ -139,7 +139,7 @@ service:
 
 # Ingress configuration
 ingress:
-  enabled: true
+  enabled: false
   className: "internal-nginx"
   annotations:
     nginx.ingress.kubernetes.io/affinity: "cookie"
