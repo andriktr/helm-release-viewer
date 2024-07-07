@@ -110,7 +110,7 @@ deployment:
     timeoutSeconds: 5
 
 
-# Create required role, clusterroles, clusterrolebinding
+# Create required role, clusterrole, clusterrolebinding
 rbac:
   create: true
   readOnly: false
@@ -118,9 +118,9 @@ rbac:
     enabled: false
     clusterRole:
     rules:
-    - apiGroups: ["*"]
-      resources: ["namespaces"]
-      verbs: ["get", "list", "watch"]
+    # - apiGroups: ["*"]
+    #   resources: ["namespaces"]
+    #   verbs: ["get", "list", "watch"]
 
 
 # Service account configuration
