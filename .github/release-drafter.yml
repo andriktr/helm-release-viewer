@@ -1,0 +1,33 @@
+name-template: 'Release v$NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
+categories:
+  - title: '🚀 New Features & Improvements'
+    labels:
+      - 'enhancement'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+      - 'fix'
+  - title: '📦 Helm Chart Updates'
+    labels:
+      - 'helm-chart'
+  - title: '🔒 Security Fixes'
+    labels:
+      - security
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+
+version-resolver:
+  major:
+    labels:
+      - 'major'
+  minor:
+    labels:
+      - 'minor'
+  patch:
+    labels:
+      - 'patch'
+  default: patch
+  
+
+exclude-labels:
+  - 'skip-changelog'

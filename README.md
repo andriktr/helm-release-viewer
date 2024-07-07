@@ -10,6 +10,7 @@
   - [What will be deployed](#what-will-be-deployed)
   - [Helm-Release-Viewer application](#helm-release-viewer-application)
     - [Known issues and possible improvements in Helm-Release-Viewer application](#known-issues-and-possible-improvements-in-helm-release-viewer-application)
+  - [Run application locally](#run-application-locally)
   - [Helm-Release-Viewer helm chart](#helm-release-viewer-helm-chart)
     - [Known issues and possible improvements in Helm-Release-Viewer helm chart](#known-issues-and-possible-improvements-in-helm-release-viewer-helm-chart)
     - [Configure Helm-Release-Viewer chart](#configure-helm-release-viewer-chart)
@@ -56,6 +57,43 @@ Add a favicon to the application | :white_check_mark:
 Add an authentication mechanism to the application | :x:
 Add an optional feature to manage releases like rollback or uninstall | :x:
 
+# Run application locally
+
+To run the application locally you need to perform the following steps:
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/andriktr/helm-release-viewer.git
+```
+
+2. Change to the `app` directory
+
+```bash
+cd helm-release-viewer/app
+```
+
+3. Install the required dependencies by running `pip install -r requirements.txt`
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Set the `IN_CLUSTER` environment variable to `false`
+
+```bash
+export IN_CLUSTER=false
+```
+
+5. Run the application
+
+```bash
+python helm_release_viewer.py
+```
+
+6. Access the application by opening [http://localhost:8080](http://localhost:8080) in your web browser
+
+
 ## Helm-Release-Viewer helm chart
 
 The helm chart to deploy the helm-release-viewer application is located in the [helm-release-viewer](/charts/helm-release-viewer) directory. It will deploy all necessary dependencies required to run and function the application.
@@ -68,9 +106,11 @@ Configure sticky sessions for the ingress | :white_check_mark:
 Add a Readiness probe to the application | :white_check_mark:
 Add a Liveness probe to the application | :white_check_mark:
 Add pod disruption budget to the deployment | :white_check_mark:
-Add optional horizontal pod autoscaler to the deployment | :x:
-Add GitHub actions to build and push the Docker image | :x:
-Add GitHub actions to package and deploy the helm chart to a repository | :x:
+Add optional horizontal pod autocaler to the deployment | :x:
+Add GitHub actions to build and push the Docker image | :white_check_mark:
+Add GitHub actions to package and deploy the helm chart to a repository | :white_check_mark:
+Add GitHub actions to automatically generate release notes | :x:
+Add GitHub actions to automatically update CHANGELOG.md | :x:
 
 ### Configure Helm-Release-Viewer chart
 
