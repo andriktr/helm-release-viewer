@@ -33,7 +33,16 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
-  
+
+template: |
+  ## What's Changed
+  $CHANGES
+
+  ## New Contributors
+  $CONTRIBUTORS
+
+  Thanks to everyone who has contributed to this release!
+
 
 exclude-labels:
   - 'skip-changelog'
