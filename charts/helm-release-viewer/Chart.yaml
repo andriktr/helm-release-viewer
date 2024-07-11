@@ -6,4 +6,4 @@ description: |
   current values and manifest files.
 name: helm-release-viewer
 type: application
-version: 0.1.2
+version: 0.1.3
