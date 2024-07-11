@@ -7,4 +7,4 @@ description: |
   This is a Helm chart for the application which allows quickly deploy it to any Kubernetes cluster in a few minutes. 
 name: helm-release-viewer
 type: application
-version: 0.1.3
+version: 0.1.4
