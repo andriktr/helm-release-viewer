@@ -9,8 +9,6 @@ on:
     paths:
       - 'app/*'
 
-- 'app/*'
-
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
