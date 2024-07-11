@@ -14,6 +14,12 @@ categories:
   - title: '🔒 Security Fixes'
     labels:
       - security
+  - title: '📖 Documentation'
+    labels:
+      - documentation
+  - title: 'Other Changes'
+    labels:
+      - 'other'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 
 version-resolver:
