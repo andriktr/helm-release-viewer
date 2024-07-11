@@ -4,6 +4,7 @@ description: |
   A Helm release viewer. Is a python application that reads the helm releases from the cluster and displays them in a web interface.
   with couple of filters and search options. Also, it provides the ability to view the release revision history. View, copy, download
   current values and manifest files.
+  This is a Helm chart for the application which allows quickly deploy it to any Kubernetes cluster in a few minutes. 
 name: helm-release-viewer
 type: application
 version: 0.1.3
