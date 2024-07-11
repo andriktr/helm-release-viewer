@@ -98,9 +98,9 @@ deployment:
     httpGet:
       path: /healthz
       port: 8080
-    initialDelaySeconds: 3
-    periodSeconds: 3
-    timeoutSeconds: 5
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 60
   # Readiness probe configuration
   readinessProbe:
     tcpSocket:
