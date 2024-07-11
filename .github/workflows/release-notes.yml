@@ -2,7 +2,7 @@ name: Generate Release Notes
 
 on:
   push:
-    tags:
+    branches:
       - main
 
 jobs:
