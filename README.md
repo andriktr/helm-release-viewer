@@ -109,8 +109,6 @@ Add pod disruption budget to the deployment | :white_check_mark:
 Add optional horizontal pod autocaler to the deployment | :x:
 Add GitHub actions to build and push the Docker image | :white_check_mark:
 Add GitHub actions to package and deploy the helm chart to a repository | :white_check_mark:
-Add GitHub actions to automatically generate release notes | :x:
-Add GitHub actions to automatically update CHANGELOG.md | :x:
 
 ### Configure Helm-Release-Viewer chart
 

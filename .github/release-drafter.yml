@@ -1,48 +1,48 @@
-name-template: 'Release v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
-categories:
-  - title: '🚀 New Features & Improvements'
-    labels:
-      - 'enhancement'
-  - title: '🐛 Bug Fixes'
-    labels:
-      - 'bug'
-      - 'fix'
-  - title: '📦 Helm Chart Updates'
-    labels:
-      - 'helm-chart'
-  - title: '🔒 Security Fixes'
-    labels:
-      - security
-  - title: '📖 Documentation'
-    labels:
-      - documentation
-  - title: 'Other Changes'
-    labels:
-      - 'other'
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+# name-template: 'Release v$NEXT_PATCH_VERSION'
+# tag-template: 'v$NEXT_PATCH_VERSION'
+# categories:
+#   - title: '🚀 New Features & Improvements'
+#     labels:
+#       - 'enhancement'
+#   - title: '🐛 Bug Fixes'
+#     labels:
+#       - 'bug'
+#       - 'fix'
+#   - title: '📦 Helm Chart Updates'
+#     labels:
+#       - 'helm-chart'
+#   - title: '🔒 Security Fixes'
+#     labels:
+#       - security
+#   - title: '📖 Documentation'
+#     labels:
+#       - documentation
+#   - title: 'Other Changes'
+#     labels:
+#       - 'other'
+# change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 
-version-resolver:
-  major:
-    labels:
-      - 'major'
-  minor:
-    labels:
-      - 'minor'
-  patch:
-    labels:
-      - 'patch'
-  default: patch
+# version-resolver:
+#   major:
+#     labels:
+#       - 'major'
+#   minor:
+#     labels:
+#       - 'minor'
+#   patch:
+#     labels:
+#       - 'patch'
+#   default: patch
 
-template: |
-  ## What's Changed
-  $CHANGES
+# template: |
+#   ## What's Changed
+#   $CHANGES
 
-  ## New Contributors
-  $CONTRIBUTORS
+#   ## New Contributors
+#   $CONTRIBUTORS
 
-  Thanks to everyone who has contributed to this release!
+#   Thanks to everyone who has contributed to this release!
 
 
-exclude-labels:
-  - 'skip-changelog'
+# exclude-labels:
+#   - 'skip-changelog'
